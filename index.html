@@ -342,6 +342,7 @@
       <form onsubmit="sendWhatsAppMessage(event)" class="contact-form">
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="email" id="email" placeholder="Your Email" required>
+        <input type="tel" id="phone" placeholder="Your Phone Number" required pattern="[0-9]{10}" title="Enter a 10-digit phone number">
         <textarea id="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
@@ -438,23 +439,19 @@
   
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
       const message = document.getElementById("message").value.trim();
   
-      if (!name || !email || !message) {
+      if (!name || !email || !phone || !message) {
         alert("Please fill out all fields.");
         return;
       }
   
-      // Format the message
-      const fullMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+      const fullMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
   
-      // Owner's WhatsApp number (India format, no + or spaces)
-      const phoneNumber = "917338020204";
-  
-      // WhatsApp URL with encoded message
+      const phoneNumber = "917338020204"; // Owner's WhatsApp number
       const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
   
-      // Open WhatsApp in a new tab
       window.open(whatsappURL, "_blank");
     }
   </script>
