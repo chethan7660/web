@@ -436,25 +436,25 @@
     function sendWhatsAppMessage(event) {
       event.preventDefault();
   
-      // Fetch values
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
   
-      // Validate again just in case
       if (!name || !email || !message) {
         alert("Please fill out all fields.");
         return;
       }
   
       // Format the message
-      const fullMessage = Name: ${name}\nEmail: ${email}\nMessage: ${message};
-      
-      // Company WhatsApp number (with country code, no + or spaces)
-      const phoneNumber = "917338020204";
-      const whatsappURL = https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)};
+      const fullMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
   
-      // Open WhatsApp in new tab
+      // Owner's WhatsApp number (India format, no + or spaces)
+      const phoneNumber = "917338020204";
+  
+      // WhatsApp URL with encoded message
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
+  
+      // Open WhatsApp in a new tab
       window.open(whatsappURL, "_blank");
     }
   </script>
