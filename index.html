@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHFPCL COLD PRESSED OIL</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  
+    .blurred {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+  
+    .enlarged {
+      transform: scale(1.5) !important;
+      z-index: 10;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+  
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: #c5e872;
+      flex-wrap: wrap;
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    .logo img {
+      width: 99px;
+      height: 99px;
+      margin-right: 10px;
+    }
+  
+    .search-bar {
+      display: flex;
+      align-items: center;
+      max-width: 500px;
+      position: relative;
+    }
+  
+    .search-bar input {
+      width: 100%;
+      padding: 10px 40px 10px 15px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 25px;
+      outline: none;
+    }
+  
+    .search-bar i {
+      position: absolute;
+      right: 15px;
+      color: gray;
+    }
+  
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  
+    section {
+      padding: 50px 20px;
+    }
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    .card-container, .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 10px;
+    }
+  
+    .card, .product-card {
+      background-color: #ece5e5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, z-index 0.3s ease;
+      cursor: pointer;
+    }
+  
+    .card:hover, .product-card:hover {
+      transform: scale(1.05);
+    }
+  
+    .card img, .product-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+  
+    .card p, .product-card p {
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .floating-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .floating-icons a {
+      font-size: 24px;
+      text-decoration: none;
+      padding: 12px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    .floating-icons .call {
+      background-color: #007bff;
+    }
+  
+    /* Overlay styles */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+  
+    .overlay-content {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      max-width: 90%;
+      max-height: 90%;
+    }
+  
+    .overlay-content img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+  
+    .overlay-content h3 {
+      margin-bottom: 10px;
+    }
+  
+    .overlay .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+  
+    /* Responsive Navbar for Mobile */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+  
+      .search-bar {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+  </head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/icons/logo.png" alt="Logo">
+      PHFPCL COLD PRESSED OIL
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search products or categories...">
+      <i class="fas fa-search"></i>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#services">Rental</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>PAVAGADA HORTICULTURE FARMERS PRODUCER COMPANY LTD.,</h2>
+
+  <section id="categories">
+    <h2>Browse by Category</h2>
+    <div class="card-container">
+      <div class="card"><img src="assets/icons/groundnut.png" alt=""><p>Groundnut</p></div>
+      <div class="card"><img src="assets/icons/groundnut-oil.png" alt=""><p>Groundnut oil</p></div>
+      <div class="card"><img src="assets/icons/coconut.png" alt=""><p>Coconut</p></div>
+      <div class="card"><img src="assets/icons/coconut-oil.png" alt=""><p>Coconut oil</p></div>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2>Explore Products</h2>
+    <div class="product-grid">
+      <div class="product-card"><img src="assets/icons/groundnut.png" alt=""><p>Groundnut</p></div>
+      <div class="product-card"><img src="assets/icons/groundnut-oil.png" alt=""><p>Groundnut oil</p></div>
+      <div class="product-card"><img src="assets/icons/coconut.png" alt=""><p>Coconut</p></div>
+      <div class="product-card"><img src="assets/icons/coconut-oil.png" alt=""><p>Coconut oil</p></div>
+      <div class="product-card"><img src="assets/icons/fertilizer.png" alt=""><p>Fertilizers</p></div>
+      <div class="product-card"><img src="assets/icons/pesticide.png" alt=""><p>Pesticides</p></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Implements Rental</h2>
+    <div class="product-grid">
+      <div class="product-card"><img src="assets/icons/tractor.png" alt=""><p>Tractor</p></div>
+      <div class="product-card"><img src="assets/icons/cultivator.png" alt=""><p>Cultivator</p></div>
+      <div class="product-card"><img src="assets/icons/rotavator.png" alt=""><p>Rotavator</p></div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+<section id="about" style="background: #f9f9f9; padding: 60px 20px;">
+  <div style="max-width: 1000px; margin: auto; text-align: center;">
+    <h2 style="font-size: 36px; margin-bottom: 20px; color: #2c3e50; position: relative;">
+      About Us
+      <span style="display: block; width: 60px; height: 4px; background: #f39c12; margin: 10px auto 0; border-radius: 2px;"></span>
+    </h2>
+    <div style="font-size: 18px; line-height: 1.8; color: #444; text-align: justify; animation: fadeIn 1s ease-in-out;">
+      <p style="margin-bottom: 20px;">
+        At <strong style="color: #d35400;">PHFPCL Cold Pressed Oil</strong>, we believe great taste should never come at the cost of your health or the planet. That’s why we’re committed to providing a <strong style="color: #27ae60;">Simply Better</strong> way to cook and eat—with our range of cold-pressed oils and plant-based, eco-conscious products that are both nutritious and sustainable.
+      </p>
+      <p style="margin-bottom: 20px;">
+        Our cold-pressed oils are extracted naturally, without heat or chemicals, preserving the essential nutrients and flavor of every drop. Unlike conventional refined oils, our oils offer a wholesome alternative that supports your well-being while delighting your taste buds. Crafted with care for every Indian kitchen, our oils blend tradition with innovation.
+      </p>
+      <p style="margin-bottom: 20px;">
+        PHFPCL also promotes plant-based alternatives that are 100% animal-free and eco-friendly. These smart protein products match the taste and texture of meat, minus the environmental impact. They help reduce reliance on animal agriculture and significantly cut down on carbon emissions—without compromising on taste or convenience.
+      </p>
+      <p style="margin-bottom: 20px;">
+        Whether you're cooking at home or preparing meals on the move, our products are designed to fit your lifestyle. Store them however you like—our clean-label commitment ensures no trans fats, no preservatives, and no artificial flavors or colors.
+      </p>
+      <p>
+        Join us on our journey towards a healthier, tastier, and greener future. At <strong style="color: #d35400;">PHFPCL</strong>, it's not just better—it’s <strong style="color: #27ae60;">Simply Better</strong>!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Moved animation and responsive style outside -->
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    #about h2 {
+      font-size: 28px;
+    }
+
+    #about div {
+      font-size: 16px;
+    }
+  }
+</style>
+
+  
+  <section id="contact">
+    <h2>Contact Us</h2>
+  
+    <div class="contact-container">
+      <!-- Contact Info -->
+      <div class="contact-info" style="font-size: 18px; line-height: 2; color: #333;">
+        <p>
+          <a href="https://wa.me/917338020204" target="_blank" style="text-decoration: none; color: inherit;">
+            <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" class="icon" style="vertical-align: middle;"> +91 7338020204
+          </a>
+        </p>
+        <p>
+          <a href="tel:+917338020204" style="text-decoration: none; color: inherit;">
+            <img src="https://img.icons8.com/color/48/000000/phone.png" class="icon" style="vertical-align: middle;"> +91 7338020204
+          </a>
+        </p>
+        <p>
+          <a href="mailto:chethan7660@gmail.com" style="text-decoration: none; color: inherit;">
+            <img src="https://img.icons8.com/color/48/000000/email.png" class="icon" style="vertical-align: middle;"> chethan7660@gmail.com
+          </a>
+        </p>
+        <p>
+          <img src="https://img.icons8.com/color/48/000000/marker.png" class="icon" style="vertical-align: middle;">
+          #150, Mangalavada- 572116, Pavagada taluk, Tumkur dist, Karnataka, India
+        </p>
+      </div>
+      
+  
+      <!-- Contact Form -->
+      <form onsubmit="sendWhatsAppMessage(event)" class="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- CSS Styling -->
+  <style>
+    #contact {
+      background: linear-gradient(to right, #f9f9f9, #f1f1f1);
+      padding: 60px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+  
+    #contact h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+  
+    .contact-container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+  
+    .contact-info, .contact-form {
+      background: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 30px;
+      flex: 1 1 400px;
+    }
+  
+    .contact-info p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+  
+    .icon {
+      width: 28px;
+      margin-right: 12px;
+    }
+  
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  
+    .contact-form textarea {
+      height: 120px;
+      resize: none;
+    }
+  
+    .contact-form button {
+      width: 100%;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .contact-form button:hover {
+      background-color: #1eb75c;
+    }
+  
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+  
+  <!-- WhatsApp Script -->
+  <script>
+    function sendWhatsAppMessage(event) {
+      event.preventDefault();
+  
+      // Fetch values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+  
+      // Validate again just in case
+      if (!name || !email || !message) {
+        alert("Please fill out all fields.");
+        return;
+      }
+  
+      // Format the message
+      const fullMessage = Name: ${name}\nEmail: ${email}\nMessage: ${message};
+      
+      // Company WhatsApp number (with country code, no + or spaces)
+      const phoneNumber = "917338020204";
+      const whatsappURL = https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)};
+  
+      // Open WhatsApp in new tab
+      window.open(whatsappURL, "_blank");
+    }
+  </script>
+  
+  
+  </section>
+
+
+<div class="floating-icons">
+  <a href="https://wa.me/917338020204" target="_blank" class="whatsapp" title="Chat on WhatsApp">💬</a>
+  <a href="tel:+917338020204" class="call" title="Call Now">📞</a>
+  <a href="mailto:chethan7660@gmail.com" class="email" title="Send Email">📧</a>
+</div>
+
+  <!-- Overlay for item display -->
+  <div class="overlay" id="itemOverlay">
+    <div class="overlay-content" id="overlayContent">
+      <span class="close-btn" onclick="closeOverlay()"></span>
+      <img id="overlayImg" src="" alt="">
+      <h3 id="overlayText"></h3>
+      <a href="tel:+919019198605" class="contact-button">Contact to buy</a>
+    </div>
+  </div>
+
+  
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    // Scroll to top on refresh
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+
+    document.getElementById("searchInput").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        const query = event.target.value.toLowerCase().trim();
+        const productCards = document.querySelectorAll(".product-card");
+        const categoryCards = document.querySelectorAll(".card");
+        let matchFound = false;
+        let scrollTarget = null;
+        let matchedCard = null;
+
+        document.querySelectorAll(".product-card, .card").forEach(el => {
+          el.classList.remove("blurred", "enlarged");
+        });
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("blurred"));
+
+        productCards.forEach(card => {
+          const text = card.querySelector("p").textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.classList.remove("blurred");
+            card.classList.add("enlarged");
+            matchFound = true;
+            matchedCard = card;
+            scrollTarget = document.getElementById("products");
+          } else {
+            card.classList.add("blurred");
+          }
+        });
+
+        categoryCards.forEach(card => {
+          const text = card.querySelector("p").textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.classList.remove("blurred");
+            card.classList.add("enlarged");
+            matchFound = true;
+            matchedCard = card;
+            scrollTarget = document.getElementById("categories");
+          } else {
+            card.classList.add("blurred");
+          }
+        });
+
+        if (matchFound && scrollTarget && matchedCard) {
+          matchedCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          productCards.forEach(card => card.classList.remove("blurred"));
+          categoryCards.forEach(card => card.classList.remove("blurred"));
+          alert("Product or Category not found!");
+        }
+      }
+    });
+
+    // Display popup overlay on card click
+    function setupCardClick() {
+      const cards = document.querySelectorAll(".card, .product-card");
+      cards.forEach(card => {
+        card.addEventListener("click", () => {
+          const imgSrc = card.querySelector("img").src;
+          const text = card.querySelector("p").textContent;
+          document.getElementById("overlayImg").src = imgSrc;
+          document.getElementById("overlayText").textContent = text;
+          document.getElementById("itemOverlay").style.display = "flex";
+        });
+      });
+    }
+
+    
+    document.getElementById("itemOverlay").addEventListener("click", function(event) {
+      if (event.target === this) {
+        this.style.display = "none";
+      }
+    });
+    window.onload = setupCardClick;
+  </script>
+  
+</body>
+<footer style="background-color: #c5e872; text-align: center; padding: 20px; font-size: 16px;">
+  &copy; 2025 PHFPCL COLD PRESSED OIL. All rights reserved.
+</footer>
+
+
+</html>
